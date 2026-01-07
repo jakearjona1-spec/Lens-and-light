@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Session — Lens & Light Co</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span> Lens & Light Co</a>
+      <div class="menu">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+        <a class="btn primary" href="contact.html">Book a Session</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container" style="padding:26px 0 10px">
+    <div class="kicker">Booking</div>
+    <h1 class="h1" style="margin:0 0 10px">Book a Session</h1>
+    <p class="sub" style="margin-bottom:18px">
+      Fastest way to book: email your requested date, session type, and location. I’ll reply with availability and next steps.
+    </p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Email booking</h3>
+        <p style="margin-bottom:12px">Tap to open a pre-filled email:</p>
+        <a class="btn primary" href="mailto:jakearjona1@gmail.com?subject=Booking%20Inquiry%20-%20Lens%20%26%20Light%20Co&body=Name%3A%0ASession%20type%3A%0APreferred%20date%2Ftime%3A%0ALocation%3A%0ABudget%20(if%20any)%3A%0AAny%20notes%3A">Email Jake</a>
+        <a class="btn" style="margin-left:8px" href="tel:+19418960252">Call/Text</a>
+      </div>
+
+      <div class="card">
+        <h3>What to include</h3>
+        <p>• Session type (portraits, couples, wedding, event, real estate, etc.)<br>
+           • Preferred date/time<br>
+           • Location<br>
+           • Any reference style (clean / luxury / modern)</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>Optional quick form (opens your email app)</h3>
+      <form class="form" onsubmit="sendEmail(event)">
+        <div>
+          <label>Your name</label>
+          <input id="name" required placeholder="Jake / Client name" />
+        </div>
+        <div>
+          <label>Session type</label>
+          <select id="type" required>
+            <option value="">Select one…</option>
+            <option>Portraits</option>
+            <option>Couples / Engagements</option>
+            <option>Weddings</option>
+            <option>Events</option>
+            <option>Real Estate</option>
+            <option>Family</option>
+            <option>Branding / Lifestyle</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Preferred date</label>
+          <input id="date" placeholder="MM/DD/YYYY" />
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea id="msg" placeholder="Location, timing, must-have shots, etc."></textarea>
+        </div>
+        <button class="btn primary" type="submit">Generate Email</button>
+      </form>
+      <p class="small" style="margin-top:10px">This does not store data—your email app sends the message.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="y"></span> Lens & Light Co — Jake Arjona •
+      <a href="mailto:jakearjona1@gmail.com">jakearjona1@gmail.com</a> •
+      <a href="tel:+19418960252">941-896-0252</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    function sendEmail(e){
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('name').value.trim());
+      const type = encodeURIComponent(document.getElementById('type').value.trim());
+      const date = encodeURIComponent(document.getElementById('date').value.trim());
+      const msg  = encodeURIComponent(document.getElementById('msg').value.trim());
+
+      const subject = `Booking Inquiry - ${decodeURIComponent(type)} - Lens & Light Co`;
+      const body =
+`Name: ${decodeURIComponent(name)}
+Session type: ${decodeURIComponent(type)}
+Preferred date/time: ${decodeURIComponent(date)}
+
+Message:
+${decodeURIComponent(msg)}`;
+
+      const mailto = `mailto:jakearjona1@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+</html>
